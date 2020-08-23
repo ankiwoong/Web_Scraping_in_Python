@@ -140,3 +140,87 @@ Profile: Aphrodite
 ```
 
 ---
+
+Ch3> 정규 표현식에 대한 우선 순위
+
+```python
+import re
+
+find_all_ex1 = re.findall("ab*c", "ac")
+
+print(find_all_ex1)
+
+find_all_ex2 = re.findall("ab*c", "abcd")
+find_all_ex3 = re.findall("ab*c", "acc")
+find_all_ex4 = re.findall("ab*c", "abcac")
+find_all_ex5 = re.findall("ab*c", "abdc")
+
+print(find_all_ex2)
+print(find_all_ex3)
+print(find_all_ex4)
+print(find_all_ex5)
+
+find_all_ex6 = re.findall("ab*c", "ABC")
+find_all_ex7 = re.findall("ab*c", "ABC", re.IGNORECASE)
+
+print(find_all_ex6)
+print(find_all_ex7)
+
+find_all_ex7 = re.findall("a.c", "abc")
+find_all_ex8 = re.findall("a.c", "abbc")
+find_all_ex9 = re.findall("a.c", "ac")
+find_all_ex10 = re.findall("a.c", "acc")
+
+print(find_all_ex7)
+print(find_all_ex8)
+print(find_all_ex9)
+print(find_all_ex10)
+
+find_all_ex11 = re.findall("a.*c", "abc")
+find_all_ex12 = re.findall("a.*c", "abbc")
+find_all_ex13 = re.findall("a.*c", "ac")
+find_all_ex14 = re.findall("a.*c", "acc")
+
+print(find_all_ex11)
+print(find_all_ex12)
+print(find_all_ex13)
+print(find_all_ex14)
+
+match_results = re.search("ab*c", "ABC", re.IGNORECASE)
+match_results_group = match_results.group()
+
+print(match_results_group)
+
+string = "Everything is <replaced> if it's in <tags>."
+string = re.sub("<.*>", "ELEPHANTS", string)
+
+print(string)
+
+string2 = "Everything is <replaced> if it's in <tags>."
+string2 = re.sub("<.*?>", "ELEPHANTS", string2)
+
+print(string2)
+```
+
+```shell
+['ac']
+['abc']
+['ac']
+['abc', 'ac']
+[]
+[]
+['ABC']
+['abc']
+[]
+[]
+['acc']
+['abc']
+['abbc']
+['ac']
+['acc']
+ABC
+Everything is ELEPHANTS.
+Everything is ELEPHANTS if it's in ELEPHANTS.
+```
+
+---
