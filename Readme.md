@@ -51,6 +51,8 @@ Successfully installed certifi-2020.6.20 chardet-3.0.4 idna-2.10 requests-2.24.0
 
 ---
 
+# Part1 웹 사이트에서 텍스트 스크래치 및 구문 분석
+
 Ch 1> 첫번째 웹 스크래퍼
 
 ```python
@@ -245,6 +247,38 @@ print(title)
 
 ```shell
 Profile: Dionysus
+```
+
+---
+Part 1 테스트>
+
+```python
+from urllib.request import urlopen
+
+url = "http://olympus.realpython.org/profiles/dionysus"
+
+html_page = urlopen(url)
+
+html_text = html_page.read().decode("utf-8")
+
+for string in ["Name: ", "Favorite Color:"]:
+    string_start_idx = html_text.find(string)
+   
+    text_start_idx = string_start_idx + len(string)
+
+    next_html_tag_offset = html_text[text_start_idx:].find("<")
+    text_end_idx = text_start_idx + next_html_tag_offset
+
+    raw_text = html_text[text_start_idx:text_end_idx]
+
+    clean_text = raw_text.strip(" \r\n\t")
+
+    print(clean_text)
+```
+
+```shell
+Dionysus
+Wine
 ```
 
 ---
