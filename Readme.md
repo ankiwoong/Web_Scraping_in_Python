@@ -53,7 +53,7 @@ Successfully installed certifi-2020.6.20 chardet-3.0.4 idna-2.10 requests-2.24.0
 
 ---
 
-Part 1> 첫번째 웹 스크래퍼
+Ch 1> 첫번째 웹 스크래퍼
 
 ```python
 from urllib.request import urlopen
@@ -92,3 +92,51 @@ print(html)
 
 </html>
 ```
+
+---
+
+Ch2> 문자열 메소드를 사용하여 HTML에서 텍스트 추출
+
+```python
+from urllib.request import urlopen
+
+url = "http://olympus.realpython.org/profiles/aphrodite"
+page = urlopen(url)
+
+html_bytes = page.read()
+html = html_bytes.decode("utf-8")
+
+title_index = html.find("<title>")
+print(title_index)
+
+start_index = title_index + len("<title>")
+print(start_index)
+
+end_index = html.find("</title>")
+print(end_index)
+
+title = html[start_index:end_index]
+print(title)
+
+url = "http://olympus.realpython.org/profiles/poseidon"
+
+page = urlopen(url)
+html = page.read().decode("utf-8")
+start_index = html.find("<title>") + len("<title>")
+end_index = html.find("</title>")
+title = html[start_index:end_index]
+
+print(title)
+```
+
+```shell
+14
+21
+39
+Profile: Aphrodite
+
+<head>
+<title >Profile: Poseidon
+```
+
+---
