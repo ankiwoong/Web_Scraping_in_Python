@@ -22,8 +22,6 @@ HTML구문 분석기를 사용하여 웹 사이트 데이터 구문 분석
 
 ---
 
-* 예제 사이트 : <http://olympus.realpython.org/profiles/aphrodite>
-
 * 가상환경 설정
 
 ```python
