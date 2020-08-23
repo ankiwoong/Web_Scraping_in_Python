@@ -52,3 +52,43 @@ Successfully installed certifi-2020.6.20 chardet-3.0.4 idna-2.10 requests-2.24.0
 ```
 
 ---
+
+Part 1> 첫번째 웹 스크래퍼
+
+```python
+from urllib.request import urlopen
+
+url = "http://olympus.realpython.org/profiles/aphrodite"
+page = urlopen(url)
+print(page)
+
+html_bytes = page.read()
+html = html_bytes.decode("utf-8")
+print(html)
+```
+
+```shell
+<http.client.HTTPResponse object at 0x000001E62653A668>
+
+<html>
+
+<head>
+    <title>Profile: Aphrodite</title>
+</head>
+
+<body bgcolor="yellow">
+    <center>
+        <br><br>
+        <img src="/static/aphrodite.gif" />
+        <h2>Name: Aphrodite</h2>
+        <br><br>
+        Favorite animal: Dove
+        <br><br>
+        Favorite color: Red
+        <br><br>
+        Hometown: Mount Olympus
+    </center>
+</body>
+
+</html>
+```
