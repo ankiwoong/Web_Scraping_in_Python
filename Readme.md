@@ -34,7 +34,7 @@ python -m venv venv
 pip install requests
 ```
 
-```shell
+```console
 Collecting requests
   Using cached https://files.pythonhosted.org/packages/45/1e/0c169c6a5381e241ba7404532c16a21d86ab872c9bed8bdcd4c423954103/requests-2.24.0-py2.py3-none-any.whl
 Collecting urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 (from requests)
@@ -55,7 +55,7 @@ Successfully installed certifi-2020.6.20 chardet-3.0.4 idna-2.10 requests-2.24.0
 pip install beautifulsoup4
 ```
 
-```shell
+```console
 Collecting beautifulsoup4
   Using cached https://files.pythonhosted.org/packages/66/25/ff030e2437265616a1e9b25ccc864e0371a0bc3adb7c5a404fd661c6f4f6/beautifulsoup4-4.9.1-py3-none-any.whl
 Collecting soupsieve>1.2 (from beautifulsoup4)
@@ -85,7 +85,7 @@ html = html_bytes.decode("utf-8")
 print(html)
 ```
 
-```shell
+```console
 <http.client.HTTPResponse object at 0x000001E62653A668>
 
 <html>
@@ -147,7 +147,7 @@ title = html[start_index:end_index]
 print(title)
 ```
 
-```shell
+```console
 14
 21
 39
@@ -220,7 +220,7 @@ string2 = re.sub("<.*?>", "ELEPHANTS", string2)
 print(string2)
 ```
 
-```shell
+```console
 ['ac']
 ['abc']
 ['ac']
@@ -263,7 +263,7 @@ title = re.sub("<.*?>", "", title)
 print(title)
 ```
 
-```shell
+```console
 Profile: Dionysus
 ```
 
@@ -294,11 +294,56 @@ for string in ["Name: ", "Favorite Color:"]:
     print(clean_text)
 ```
 
-```shell
+```console
 Dionysus
 Wine
 ```
 </div>
 </details>
+
+---
+
+# Part2 Python에서 웹 스크래핑에 HTML 파서 사용
+
+Ch1> BeautifulSoup 객체 작성
+
+```python
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
+
+# urllib.properties 모듈의 urlopenhroperties를 사용하여 URL http://olympus.realpython.org/profiles/dionysus 열기
+url = "http://olympus.realpython.org/profiles/dionysus"
+
+page = urlopen(url)
+
+# 페이지에서 HTML을 문자열로 읽고 html 변수에 할당
+html = page.read().decode("utf-8")
+
+# BeautifulSoup 객체를 작성하여 soup 변수에 할당
+soup = BeautifulSoup(html, "html.parser")
+
+print(soup)
+```
+
+```console
+<html>
+<head>
+<title>Profile: Dionysus</title> 
+</head>
+<body bgcolor="yellow">
+<center>
+<br/><br/>
+<img src="/static/dionysus.jpg"/>
+<h2>Name: Dionysus</h2>
+<img src="/static/grapes.png"/><br/><br/>
+Hometown: Mount Olympus
+<br/><br/>
+Favorite animal: Leopard <br/>
+<br/>
+Favorite Color: Wine
+</center>
+</body>
+</html>
+```
 
 ---
