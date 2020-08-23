@@ -222,3 +222,29 @@ Everything is ELEPHANTS if it's in ELEPHANTS.
 ```
 
 ---
+
+Ch4> 정규 표현식을 사용하여 HTML에서 텍스트 추출
+
+```python
+import re
+from urllib.request import urlopen
+
+url = "http://olympus.realpython.org/profiles/dionysus"
+page = urlopen(url)
+html = page.read().decode("utf-8")
+
+pattern = "<title.*?>.*?</title.*?>"
+
+match_results = re.search(pattern, html, re.IGNORECASE)
+
+title = match_results.group()
+title = re.sub("<.*?>", "", title)
+
+print(title)
+```
+
+```shell
+Profile: Dionysus
+```
+
+---
