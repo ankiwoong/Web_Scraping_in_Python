@@ -53,6 +53,9 @@ Successfully installed certifi-2020.6.20 chardet-3.0.4 idna-2.10 requests-2.24.0
 
 # Part1 웹 사이트에서 텍스트 스크래치 및 구문 분석
 
+<details>
+<summary>Ch1 ~ Ch4 + Test Code</summary>
+<div markdown="1">
 Ch 1> 첫번째 웹 스크래퍼
 
 ```python
@@ -280,5 +283,7 @@ for string in ["Name: ", "Favorite Color:"]:
 Dionysus
 Wine
 ```
+</div>
+</details>
 
 ---
