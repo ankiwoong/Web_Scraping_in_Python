@@ -49,6 +49,21 @@ Installing collected packages: urllib3, chardet, idna, certifi, requests
 Successfully installed certifi-2020.6.20 chardet-3.0.4 idna-2.10 requests-2.24.0 urllib3-1.25.10
 ```
 
+* Beautiful Soup 설치
+
+```python
+pip install beautifulsoup4
+```
+
+```shell
+Collecting beautifulsoup4
+  Using cached https://files.pythonhosted.org/packages/66/25/ff030e2437265616a1e9b25ccc864e0371a0bc3adb7c5a404fd661c6f4f6/beautifulsoup4-4.9.1-py3-none-any.whl
+Collecting soupsieve>1.2 (from beautifulsoup4)
+  Using cached https://files.pythonhosted.org/packages/6f/8f/457f4a5390eeae1cc3aeab89deb7724c965be841ffca6cfca9197482e470/soupsieve-2.0.1-py3-none-any.whl
+Installing collected packages: soupsieve, beautifulsoup4
+Successfully installed beautifulsoup4-4.9.1 soupsieve-2.0.1
+```
+
 ---
 
 # Part1 웹 사이트에서 텍스트 스크래치 및 구문 분석
