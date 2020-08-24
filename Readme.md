@@ -311,15 +311,12 @@ Ch1> BeautifulSoup 객체 작성
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
-# urllib.properties 모듈의 urlopenhroperties를 사용하여 URL http://olympus.realpython.org/profiles/dionysus 열기
 url = "http://olympus.realpython.org/profiles/dionysus"
 
 page = urlopen(url)
 
-# 페이지에서 HTML을 문자열로 읽고 html 변수에 할당
 html = page.read().decode("utf-8")
 
-# BeautifulSoup 객체를 작성하여 soup 변수에 할당
 soup = BeautifulSoup(html, "html.parser")
 
 print(soup)
@@ -344,6 +341,81 @@ Favorite Color: Wine
 </center>
 </body>
 </html>
+```
+
+---
+
+Ch2> BeautifulSoup 객체 사용
+
+
+```python
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
+
+url = "http://olympus.realpython.org/profiles/dionysus"
+
+page = urlopen(url)
+html = page.read().decode("utf-8")
+soup = BeautifulSoup(html, "html.parser")
+
+print(soup.get_text())
+
+find_all_ex1 = soup.find_all("img")
+
+print(find_all_ex1)
+
+image1, image2 = soup.find_all("img")
+find_name_ex1 = image1.name
+find_name_ex2 = image2.name
+
+print(find_name_ex1)
+print(find_name_ex2)
+
+img_dic_1 = image1["src"]
+img_dic_2 = image2["src"]
+
+print(img_dic_1)
+print(img_dic_2)
+
+title = soup.title
+
+print(title)
+
+title_string = soup.title.string
+
+print(title_string)
+
+find_all_ex2 = soup.find_all("img", src="/static/dionysus.jpg")
+
+print(find_all_ex2)
+```
+
+```console
+Profile: Dionysus
+
+
+
+
+
+Name: Dionysus
+
+Hometown: Mount Olympus
+
+Favorite animal: Leopard
+
+Favorite Color: Wine
+
+
+
+
+[<img src="/static/dionysus.jpg"/>, <img src="/static/grapes.png"/>]
+img
+img
+/static/dionysus.jpg
+/static/grapes.png
+<title>Profile: Dionysus</title>
+Profile: Dionysus
+[<img src="/static/dionysus.jpg"/>]
 ```
 
 ---
