@@ -603,3 +603,61 @@ print(profiles_page.soup.title)
 </details>
 
 ---
+
+# Part4 실시간으로 웹 사이트와 상호 작용
+
+<details>
+<summary>Ch1 Code</summary>
+<div markdown="1">
+
+Ch1> 실시간으로 웹 사이트와 상호 작용
+
+```python
+import mechanicalsoup
+import time
+
+browser = mechanicalsoup.Browser()
+page = browser.get("http://olympus.realpython.org/dice")
+tag = page.soup.select("#result")[0]
+result = tag.text
+
+print(f"The result of your dice roll is: {result}")
+
+print("I'm about to wait for five seconds...")
+time.sleep(5)
+print("Done waiting!")
+
+browser = mechanicalsoup.Browser()
+
+for i in range(4):
+    page = browser.get("http://olympus.realpython.org/dice")
+    tag = page.soup.select("#result")[0]
+    result = tag.text
+    print(f"The result of your dice roll is: {result}")
+    time.sleep(10)
+
+browser = mechanicalsoup.Browser()
+
+for i in range(4):
+    page = browser.get("http://olympus.realpython.org/dice")
+    tag = page.soup.select("#result")[0]
+    result = tag.text
+    print(f"The result of your dice roll is: {result}")
+
+    if i < 3:
+        time.sleep(10)
+```
+
+```console
+The result of your dice roll is: 1
+I'm about to wait for five seconds...
+Done waiting!
+The result of your dice roll is: 1
+The result of your dice roll is: 2
+The result of your dice roll is: 4
+The result of your dice roll is: 3
+The result of your dice roll is: 6
+The result of your dice roll is: 3
+The result of your dice roll is: 6
+The result of your dice roll is: 4
+```
