@@ -478,6 +478,10 @@ http://olympus.realpython.org/profiles/dionysus
 
 # Part3 HTML 양식과 상호 작용
 
+<details>
+<summary>Ch1 ~ Ch2 + Test Code</summary>
+<div markdown="1">
+
 Ch1> 브라우저 객체 만들기
 ```python
 import mechanicalsoup
@@ -568,5 +572,34 @@ Aphrodite: http://olympus.realpython.org/profiles/aphrodite
 Poseidon: http://olympus.realpython.org/profiles/poseidon
 Dionysus: http://olympus.realpython.org/profiles/dionysus
 ```
+
+---
+
+Part 3 테스트>
+
+```python
+import mechanicalsoup
+
+browser = mechanicalsoup.Browser()
+
+login_url = "http://olympus.realpython.org/login"
+login_page = browser.get(login_url)
+login_html = login_page.soup
+
+form = login_html.form
+form.select("input")[0]["value"] = "zeus"
+form.select("input")[1]["value"] = "ThunderDude"
+
+profiles_page = browser.submit(form, login_page.url)
+
+print(profiles_page.soup.title)
+```
+
+```console
+<title>All Profiles</title>
+```
+
+</div>
+</details>
 
 ---
