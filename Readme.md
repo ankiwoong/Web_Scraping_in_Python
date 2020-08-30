@@ -64,6 +64,29 @@ Installing collected packages: soupsieve, beautifulsoup4
 Successfully installed beautifulsoup4-4.9.1 soupsieve-2.0.1
 ```
 
+* MechanicalSoup 설치
+  
+```python
+pip install MechanicalSoup
+```
+
+```console
+Collecting MechanicalSoup
+  Downloading https://files.pythonhosted.org/packages/0b/fe/4f871ec3379080c5979815bfec3266871e555eebf4879f551a7e5dee4766/MechanicalSoup-0.12.0-py2.py3-none-any.whl
+Collecting lxml (from MechanicalSoup)
+  Using cached https://files.pythonhosted.org/packages/bd/a3/4b377aaf02ea39585b81ad9f630226e296d983e9a94d7b78a4bc5e27226d/lxml-4.5.2-cp37-cp37m-win_amd64.whl
+Requirement already satisfied: requests>=2.0 in d:\code\study\web_scraping_in_python\venv\lib\site-packages (from MechanicalSoup) (2.24.0)
+Collecting six>=1.4 (from MechanicalSoup)
+  Using cached https://files.pythonhosted.org/packages/ee/ff/48bde5c0f013094d729fe4b0316ba2a24774b3ff1c52d924a8a4cb04078a/six-1.15.0-py2.py3-none-any.whl
+Requirement already satisfied: beautifulsoup4>=4.4 in d:\code\study\web_scraping_in_python\venv\lib\site-packages (from MechanicalSoup) (4.9.1)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in d:\code\study\web_scraping_in_python\venv\lib\site-packages (from requests>=2.0->MechanicalSoup) (1.25.10)
+Requirement already satisfied: idna<3,>=2.5 in d:\code\study\web_scraping_in_python\venv\lib\site-packages (from requests>=2.0->MechanicalSoup) (2.10)
+Requirement already satisfied: chardet<4,>=3.0.2 in d:\code\study\web_scraping_in_python\venv\lib\site-packages (from requests>=2.0->MechanicalSoup) (3.0.4)
+Requirement already satisfied: certifi>=2017.4.17 in d:\code\study\web_scraping_in_python\venv\lib\site-packages (from requests>=2.0->MechanicalSoup) (2020.6.20)
+Requirement already satisfied: soupsieve>1.2 in d:\code\study\web_scraping_in_python\venv\lib\site-packages (from beautifulsoup4>=4.4->MechanicalSoup) (2.0.1)
+Installing collected packages: lxml, six, MechanicalSoup
+Successfully installed MechanicalSoup-0.12.0 lxml-4.5.2 six-1.15.0
+```
 ---
 
 # Part1 웹 사이트에서 텍스트 스크래치 및 구문 분석
@@ -450,5 +473,52 @@ http://olympus.realpython.org/profiles/dionysus
 
 </div>
 </details>
+
+---
+
+# Part3 HTML 양식과 상호 작용
+
+Ch1> 브라우저 객체 만들기
+```python
+import mechanicalsoup
+
+browser = mechanicalsoup.Browser()
+
+url = "http://olympus.realpython.org/login"
+page = browser.get(url)
+
+print(page)
+
+print(type(page.soup))
+
+print(page.soup)
+```
+
+```console
+<Response [200]>
+
+<class 'bs4.BeautifulSoup'>
+
+<html>
+
+<head>
+    <title>Log In</title>
+</head>
+
+<body bgcolor="yellow">
+    <center>
+        <br /><br />
+        <h2>Please log in to access Mount Olympus:</h2>
+        <br /><br />
+        <form action="/login" method="post" name="login">
+            Username: <input name="user" type="text" /><br />
+            Password: <input name="pwd" type="password" /><br /><br />
+            <input type="submit" value="Submit" />
+        </form>
+    </center>
+</body>
+
+</html>
+```
 
 ---
