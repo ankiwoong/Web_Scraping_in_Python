@@ -305,6 +305,10 @@ Wine
 
 # Part2 Python에서 웹 스크래핑에 HTML 파서 사용
 
+<details>
+<summary>Ch1 ~ Ch2 + Test Code</summary>
+<div markdown="1">
+
 Ch1> BeautifulSoup 객체 작성
 
 ```python
@@ -417,5 +421,34 @@ img
 Profile: Dionysus
 [<img src="/static/dionysus.jpg"/>]
 ```
+
+---
+
+Part 2 테스트>
+
+```python
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+
+base_url = "http://olympus.realpython.org"
+
+html_page = urlopen(base_url + "/profiles")
+html_text = html_page.read().decode("utf-8")
+
+soup = BeautifulSoup(html_text, "html.parser")
+
+for link in soup.find_all("a"):
+    link_url = base_url + link["href"]
+    print(link_url)
+```
+
+```console
+http://olympus.realpython.org/profiles/aphrodite
+http://olympus.realpython.org/profiles/poseidon
+http://olympus.realpython.org/profiles/dionysus
+```
+
+</div>
+</details>
 
 ---
